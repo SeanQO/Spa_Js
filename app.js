@@ -101,6 +101,55 @@ let PostShow = {
     }
 }
 
+let Login = {
+
+    render: async () => {
+        return /*html*/ `
+            <section class="section">
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input" id="email_input" type="email" placeholder="Enter your Email">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left">
+                        <input class="input" id="pass_input" type="password" placeholder="Enter a Password">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button class="button is-primary" id="login_submit_btn">
+                        Login
+                        </button>
+                    </p>
+                </div>
+
+            </section>
+        `
+    }
+    , after_render: async () => {
+        document.getElementById("login_submit_btn").addEventListener ("click",  () => {
+            let email       = document.getElementById("email_input");
+            let pass        = document.getElementById("pass_input");
+            if (email.value =='' | pass.value == '') {
+                alert (`The fields cannot be empty`)
+            } 
+            else {
+                alert(`User with email ${email.value} is successfully Logged!`)
+            }    
+        })
+    }
+}
+
 let Register = {
 
     render: async () => {
@@ -195,11 +244,11 @@ let Navbar = {
                         <div class="navbar-end">
                             <div class="navbar-item">
                                 <div class="buttons">
-                                    <a class="button is-primary" href="/#/register">
+                                    <a class="button is-primary" href="#/register">
                                         <strong>Sign up</strong>
                                     </a>
-                                    <a class="button is-light">
-                                        Log in
+                                    <a class="button is-light" href="#/login">
+                                        <strong>Log in</strong>
                                     </a>
                                 </div>
                             </div>
@@ -265,6 +314,7 @@ const routes = {
     , '/about'      : About
     , '/p/:id'      : PostShow
     , '/register'   : Register
+    , '/login'      : Login
 };
 
 
