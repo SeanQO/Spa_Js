@@ -67,6 +67,8 @@ let Error404 = {
     }
 }
 
+function filterById(jsonObject, id) {return jsonObject.filter(function(jsonObject) {return (jsonObject['id'] == id);})[0];}
+
 let getPost = async (id) => {
     const options = {
        method: 'GET',
@@ -75,9 +77,10 @@ let getPost = async (id) => {
        }
    };
    try {
-       const response = await fetch(items + id, options)
-       const json = await response.json();
-       // console.log(json)
+       //const response = await fetch(items + id, options)
+       //const json = await response.json();
+       var selectedObject = filterById(itemsJson, id);
+       const json = selectedObject;
        return json
    } catch (err) {
        console.log('Error getting documents', err)
