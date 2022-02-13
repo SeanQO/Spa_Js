@@ -167,7 +167,7 @@ let Edit = {
                         /*html*/
                         `<li>
                             <div class="row">
-                            <a class="button is-primary" href="#/editem/${post.id}">
+                            <a style="margin-bottom: 2px" class="button is-primary" href="#/editem/${post.id}">
                                 <strong>Edit</strong>
                             </a>
                             <a href="#/p/${post.id}">${post.title}</a>
@@ -288,7 +288,7 @@ let Navbar = {
              <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="container">
                     <div class="navbar-brand">
-                        <a class="navbar-item" href="/#/">
+                        <a class="navbar-item" href="#/">
                             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
                         </a>
 
@@ -301,14 +301,11 @@ let Navbar = {
 
                     <div id="navbarBasicExample" class="navbar-menu is-active" aria-expanded="false">
                         <div class="navbar-start">
-                            <a class="navbar-item" href="/#/">
+                            <a class="navbar-item" href="#/">
                                 Home
                             </a>
-                            <a class="navbar-item" href="/#/about">
+                            <a class="navbar-item" href="#/about">
                                 About
-                            </a>
-                            <a class="navbar-item" href="/#/secret">
-                                Secret
                             </a>
                         </div>
                         <div class="navbar-end">
