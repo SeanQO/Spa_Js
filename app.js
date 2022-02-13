@@ -161,10 +161,16 @@ let Edit = {
         let posts = await getPostsList()
         let view =  /*html*/`
             <section class="section">
-                <h1> EDITOR </h1>
+                <h1> <strong>EDIT ITEMS</strong> </h1>
                 <ul>
                     ${ posts.map(post => 
-                        /*html*/`<li><a href="#/p/${post.id}">${post.title}</a></li>`
+                        /*html*/
+                        `<li>
+                            <div class="row">
+                            <a href="#/editem/${post.id}">Edit</a>  
+                            <a href="#/p/${post.id}">${post.title}</a>
+                            </div>
+                        </li>`
                         ).join('\n ')
                     }
                 </ul>
