@@ -340,6 +340,24 @@ const Utils = {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
+let Editem = {
+
+    render : async () => {
+        let request = Utils.parseRequestURL()
+        let post = await getPost(request.id)
+        //console.log(post)
+        return /*html*/`
+            <section class="section">
+                <h1> Post Id : ${post.id}</h1>
+                <p> Post Title : ${post.title} </p>
+                <p> Post Content : ${post.content} </p>
+                <p> Post Author : ${post.name} </p>
+            </section>
+        `
+    }
+    , after_render: async () => {
+    }
+}
 
 // List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
@@ -348,8 +366,10 @@ const routes = {
     , '/p/:id'      : PostShow
     , '/register'   : Register
     , '/login'      : Login
-    ,'/edit'      : Edit
+    , '/edit'       : Edit
+    , '/editem/:id' : Editem
 };
+
 
 
 // The router code. Takes a URL, checks against the list of supported routes and then renders the corresponding content page.
