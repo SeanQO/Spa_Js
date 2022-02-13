@@ -167,7 +167,9 @@ let Edit = {
                         /*html*/
                         `<li>
                             <div class="row">
-                            <a href="#/editem/${post.id}">Edit</a>  
+                            <a class="button is-primary" href="#/editem/${post.id}">
+                                <strong>Edit</strong>
+                            </a>
                             <a href="#/p/${post.id}">${post.title}</a>
                             </div>
                         </li>`
@@ -182,6 +184,41 @@ let Edit = {
     }
  
  }
+
+ let Editem = {
+
+    render : async () => {
+        let request = Utils.parseRequestURL()
+        let post = await getPost(request.id)
+        //console.log(post)
+        return /*html*/`
+            <section class="section">
+                <h1> Post Id : ${post.id}</h1>
+                <hr />
+                <div>
+                    <h1>Title:</h1>
+                    <input type='text' value=${post.title}>
+                </div>
+
+                <div>
+                    <h1>Content:</h1>
+                    <input type='text' value=${post.content}>
+                </div>
+                
+                <div>
+                    <h1>Author:</h1>
+                    <input type='text' value=${post.name}>
+                </div>
+                <hr />
+                <a class="button is-primary">
+                    <strong>Save</strong>
+                </a>
+            </section>
+        `
+    }
+    , after_render: async () => {
+    }
+}
 
 let Register = {
 
@@ -338,24 +375,6 @@ const Utils = {
     // --------------------------------
     , sleep: (ms) => {
         return new Promise(resolve => setTimeout(resolve, ms));
-    }
-}
-let Editem = {
-
-    render : async () => {
-        let request = Utils.parseRequestURL()
-        let post = await getPost(request.id)
-        //console.log(post)
-        return /*html*/`
-            <section class="section">
-                <h1> Post Id : ${post.id}</h1>
-                <p> Post Title : ${post.title} </p>
-                <p> Post Content : ${post.content} </p>
-                <p> Post Author : ${post.name} </p>
-            </section>
-        `
-    }
-    , after_render: async () => {
     }
 }
 
